@@ -7,14 +7,16 @@
   <title>Final</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
+  <link type="text/css" rel="stylesheet" href="twitter.css" /> <!--added this 6Mar21-->
 </head>
 
 <body>
   <div class="topnav">
     <a class="active" href="index.html">Home</a>
     <a href="https://twitter.com/explore/tabs/trending">Trending</a>
-    <a href="#Scoring">Scoring Guide</a>   <!-- Need to add the link for the scoring guide here -->
-    <a href="#About">About Us</a>          <!-- Need to add the link for the About Us page here -->
+    <a href="scoring.html">Scoring Guide</a>   
+    <a href="About.html">About Us</a>
+    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category"> <!--search bar-->          
   </div>
 
   <div class="sign-in-or-sign-out"></div>
