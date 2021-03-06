@@ -5,7 +5,7 @@
 > Added the following files: icons (to store our icons n images), twitter.css to store the styling.
 
 > Added firebase config to firebase.js.
-> Added a folder for us to store icons
+>> Added a folder for us to store icons
 > Used this (https://www.w3schools.com/howto/howto_js_topnav.asp) to build navigation bar 
 > Added a twitter.css file for us to put styling elements in
 > Added
