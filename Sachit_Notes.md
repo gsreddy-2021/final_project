@@ -9,8 +9,8 @@
 
 > index.html
 1. Used this (https://www.w3schools.com/howto/howto_js_topnav.asp) to build navigation bar 
-2. Added <div class="topnav">
-3. Added <link type="text/css" rel="stylesheet" href="twitter.css" /> for css tied to the topnav
+2. Added div class="topnav">
+3. Added link type="text/css" rel="stylesheet" href="twitter.css" /> for css tied to the topnav
 
 > twitter.css
 1. Added a twitter.css file for us to put styling elements in the page
