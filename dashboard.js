@@ -33,11 +33,12 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let tweetUsername = user.displayName
         let tweetText = document.querySelector('#tweet-text').value
         let tweetRating = 0
+        let tweetTimeStamp = firebase.firestore.FieldValue.serverTimestamp()
         let docRef = await db.collection('tweets').add({ 
           userId: user.uid,
           username: tweetUsername, 
           tweetText: tweetText,
-          tweetTimeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+          tweetTimeStamp: tweetTimeStamp,
           tweetRating: tweetRating
         })
         let tweetId = docRef.id // the newly created document's ID
@@ -69,8 +70,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
   }
 })
 
-async function renderTweet(tweetId, tweetUsername, tweetText, tweetRating) //, tweetTimeStamp, tweetRating
-{
+async function renderTweet(tweetId, tweetUsername, tweetText, tweetRating, tweetTimeStamp) {
     document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
       <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
         <div class="md:mx-0 mx-4">
@@ -85,7 +85,7 @@ async function renderTweet(tweetId, tweetUsername, tweetText, tweetRating) //, t
         </div>
     
         <div>
-          <h3>this is where the tweet's timestamp should go</h3> 
+          <h3>tweet timestamp: ${tweetTimeStamp}</h3> 
         </div>
       </div>
     `)
