@@ -7,3 +7,5 @@ Login to the application doesn't work. Attempting to fix
 
   Changed our firestore config to allow email auths
   Tidied up our firebase by deleting the 'user' collection and 'users' document that contained erroneous info
+
+  Added tweets dashboard (dashboard.html)

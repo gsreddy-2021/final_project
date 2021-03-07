@@ -12,8 +12,8 @@
 
 <body>
   <div class="topnav">
-    <a class="active" href="index.html">Home</a>
-    <a href="dashboard.html">Tweets Dashboard</a>  
+    <a href="index.html">Home</a>
+    <a class="active" href="dashboard.html">Tweets Dashboard</a>   
     <a href="https://twitter.com/explore/tabs/trending">Trending</a>
     <a href="scoring.html">Scoring Guide</a>   
     <!-- cng changed 'about' to lowercase -->
@@ -24,7 +24,9 @@
   <div class="sign-in-or-sign-out"></div>
 
 
-
+<div class="tweets">
+    <!-- tweets rendered from dashboard.js -->
+</div>
   
  
   <!-- Put the Firebase config here -->
@@ -52,7 +54,7 @@
     firebase.initializeApp(firebaseConfig);
 
   </script>
-  <script src="index.js"></script>
+  <script src="dashboard.js"></script>
 </body>
 
 </html>
