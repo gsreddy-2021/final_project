@@ -9,3 +9,7 @@ Login to the application doesn't work. Attempting to fix
   Tidied up our firebase by deleting the 'user' collection and 'users' document that contained erroneous info
 
   Added tweets dashboard (dashboard.html)
+
+  Added the ability to tweet, and very basic ability to rate
+
+  Next step is to display tweets!
