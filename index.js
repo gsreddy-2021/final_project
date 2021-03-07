@@ -4,6 +4,8 @@
 firebase.auth().onAuthStateChanged(async function(user) {
   if (user) {
     // Signed in
+
+    
     console.log('signed in')
 
     // Ensure the signed-in user is in the users collection
