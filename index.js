@@ -1,11 +1,10 @@
-//let db = firebase.firestore()
-
+// CNG 10:45 am CPT this was commented out, I uncommented it because we need it for auth
+let db = firebase.firestore()
 
 firebase.auth().onAuthStateChanged(async function(user) {
   if (user) {
     // Signed in
 
-    
     console.log('signed in')
 
     // Ensure the signed-in user is in the users collection
@@ -18,7 +17,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
         document.querySelector('.sign-in-or-sign-out').innerHTML = `
         <button class="text-pink-500 underline sign-out">Sign Out</button>
       `
-      //Sing-out button event
+      // Sign-out button event
       document.querySelector('.sign-out').addEventListener('click', function(event) {
         console.log('sign out clicked')
         firebase.auth().signOut()
