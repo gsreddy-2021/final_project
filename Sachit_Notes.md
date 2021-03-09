@@ -31,4 +31,4 @@
 > dashboard.js
 1. Fixed the Timestamp issue by using another variable "tweetTimeStampDatenTime"
 2. Added a style element for ease for visibility between 2 tweets *div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8" style="background-color:DeepSkyBlue;"*
-3. a
+3. Tried to show tweets from account after signing out and signing back in. I am able to list a few attributes but can't figure out what the issue is that is stopping me from listing the tweet content, tweet timestamp, etc.
