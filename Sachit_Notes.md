@@ -22,3 +22,9 @@
 > Tips:
 1. CTRL + Shift + V will show dynamic preview. Cool feature.
 
+# 8 March 2021
+> Session xx:00 pm
+
+
+> dashboard.js
+1. Fixed the Timestamp issue by using another variable "tweetTimeStampDatenTime"

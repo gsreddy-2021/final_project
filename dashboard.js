@@ -34,16 +34,17 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let tweetText = document.querySelector('#tweet-text').value
         let tweetRating = 0
         let tweetTimeStamp = firebase.firestore.FieldValue.serverTimestamp()
+        let tweetTimeStampDatenTime = new Date() //This resolved the timestamp issue
         let docRef = await db.collection('tweets').add({ 
           userId: user.uid,
           username: tweetUsername, 
           tweetText: tweetText,
-          tweetTimeStamp: tweetTimeStamp,
+          tweetTimeStamp: tweetTimeStamp,          
           tweetRating: tweetRating
         })
         let tweetId = docRef.id // the newly created document's ID
         document.querySelector('#tweet-text').value = '' // clear the image url field
-        renderTweet(tweetId, tweetUsername, tweetText, tweetRating) // , tweetTimeStamp isn't working for some reason
+        renderTweet(tweetId, tweetUsername, tweetText, tweetRating, tweetTimeStampDatenTime) // , I added sample and it worked
             console.log(tweetTimeStamp)
       })
 
