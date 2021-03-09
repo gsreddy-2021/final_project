@@ -25,6 +25,10 @@
 # 8 March 2021
 > Session xx:00 pm
 
+> index.html
+1. Changed title from "Final" to "Disrupt Twitter"
 
 > dashboard.js
 1. Fixed the Timestamp issue by using another variable "tweetTimeStampDatenTime"
+2. Added a style element for ease for visibility between 2 tweets *div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8" style="background-color:DeepSkyBlue;"*
+3. a

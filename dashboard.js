@@ -4,8 +4,7 @@ let db = firebase.firestore()
 firebase.auth().onAuthStateChanged(async function(user) {
   if (user) {
     // Signed in
-
-    console.log('signed in')
+    console.log(`signed in`)
 
     console.log(firebase.firestore.FieldValue.serverTimestamp())
 
@@ -48,12 +47,13 @@ firebase.auth().onAuthStateChanged(async function(user) {
             console.log(tweetTimeStamp)
       })
 
+  
   } else {
     // Signed out
     console.log('signed out')
 
     // Hide the form when signed-out
-   // document.querySelector('form').classList.add('hidden')
+    document.querySelector('form').classList.add('hidden')
 
     // Initializes FirebaseUI Auth
     let ui = new firebaseui.auth.AuthUI(firebase.auth())
@@ -71,22 +71,35 @@ firebase.auth().onAuthStateChanged(async function(user) {
   }
 })
 
+// given a single post Object, render the HTML and attach event listeners
+// expects an Object that looks similar to:
+// {
+//   id: 'abcdefg',
+//   username: 'brian',
+//   imageUrl: 'https://images.unsplash.com/...',
+//   likes: 12,
+//   comments: [
+//     { username: 'brian', text: 'i love tacos!' },
+//     { username: 'ben', text: 'fake news' }
+//   ]
+// }
 async function renderTweet(tweetId, tweetUsername, tweetText, tweetRating, tweetTimeStamp) {
     document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
-      <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
+      <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8" style="background-color:DeepSkyBlue;"> 
         <div class="md:mx-0 mx-4">
           <span>Tweeted by: ${tweetUsername}</span>
         </div>
-    
+
+            
         <div>
-          <h1>${tweetText}</h1>
+          <h1 style="background-color:DeepSkyBlue;">${tweetText}</h1>
           <h2>This tweet has a rating of: </h2>
           <span class ="rating">${tweetRating}</span>
-          <button class="rating-button">rate by clicking: ✅</button>
+          <button class="rating-button">Rate by clicking: ✅</button>
         </div>
     
         <div>
-          <h3>tweet timestamp: ${tweetTimeStamp}</h3> 
+          <h3>Tweet Timestamp: ${tweetTimeStamp}</h3> 
         </div>
       </div>
     `)
