@@ -6,15 +6,15 @@ exports.handler = async function(event) {
   let body = JSON.parse(event.body)
   let userId = body.userId
   let username = body.username
-  let tweetText = body.tweetText
+  let content = body.contnt
   
   console.log(`user: ${userId}`)
-  console.log(`tweetText: ${tweetText}`)
+  console.log(`tweetText: ${content}`)
 
   let newPost = { 
     userId: userId,
     username: username, 
-    tweetText: tweetText, 
+    content: tweetText, 
     created: firebase.firestore.FieldValue.serverTimestamp()
   }
 

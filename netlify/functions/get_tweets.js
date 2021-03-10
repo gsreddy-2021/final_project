@@ -41,7 +41,7 @@ exports.handler = async function(event) {
     // add a new Object of our own creation to the tweetsData Array
     tweetsData.push({
       id: tweetId,                                           // the tweet ID
-      tweetText: tweetData.tweetText,                        // the tweet text
+      content: tweetData.tweetText,                        // the tweet text
       username: tweetData.username,                          // the username
       likes: likesQuery.size,                                // number of likes
       misinfo: misinfoQuery.size,                            // number of misinfo

@@ -38,7 +38,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
           body: JSON.stringify({
             userId: user.uid,
             username: tweetUsername,
-            content: tweetText, //replacement for imageURL
+            content: tweetText, //content is replacement for imageURL
         //    tweetTimeStamp: tweetTimeStamp,
         //    tweetRating: tweetRating
           })
@@ -97,7 +97,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
 async function renderTweet(tweet) {
   let tweetId = tweet.id 
-  console.log(${tweetId})
   document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
   <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
     <div class="md:mx-0 mx-4">
