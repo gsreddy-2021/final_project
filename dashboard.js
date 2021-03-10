@@ -95,7 +95,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 //   ]
 // }
 
-let tweets = await response.json() // Added to test if the tweet is undefined error goes away
+let tweets = response.json() // Added to test if the tweet is undefined error goes away
 
 async function renderTweet(tweet) {
   let tweetId = tweet.id 
