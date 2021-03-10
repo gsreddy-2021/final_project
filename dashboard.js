@@ -44,6 +44,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
           })
         })
         let tweet = await response.json()
+        console.log(`New Tweet posted by ${username}`)
+        console.log(`${content}`)
         document.querySelector('#content-text').value = '' //clear the tweet text entry field
         renderTweet(tweet)
       })
@@ -93,8 +95,11 @@ firebase.auth().onAuthStateChanged(async function(user) {
 //   ]
 // }
 
+let tweets = await response.json() // Added to test if the tweet is undefined error goes away
+
 async function renderTweet(tweet) {
   let tweetId = tweet.id 
+  console.log(${tweetId})
   document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
   <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
     <div class="md:mx-0 mx-4">
