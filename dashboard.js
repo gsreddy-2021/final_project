@@ -15,15 +15,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     // Sign-out button
         document.querySelector('.sign-in-or-sign-out').innerHTML = `
-        <div class="md:mx-0 mx-4"><span class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">Welcome ${user.displayName}!</span></div>
-        <button class="text-pink-500 underline sign-out">Sign Out</button>
-      `
+       <div class="md:mx-0 mx-4"><span class="font-bold text-6xl center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">Welcome ${user.displayName}!</span></div>
+   `
     // Sign-out button event
-      document.querySelector('.sign-out').addEventListener('click', function(event) {
-        console.log('sign out clicked')
-        firebase.auth().signOut()
-        document.location.href = 'dashboard.html'
-      })
+      // document.querySelector('.sign-out').addEventListener('click', function(event) {
+      //   console.log('sign out clicked')
+      //   firebase.auth().signOut()
+      //   document.location.href = 'dashboard.html'
+      // })
 
     // Listen for the form submit and create/render the new tweet
     document.querySelector('form').addEventListener('submit', async function(event) {
@@ -124,11 +123,16 @@ async function renderTweet(tweet) {
       <button class="political-button">🍕</button>
       <span class="political">${tweet.political}</span>
     </div>
-
-    <div class="comments text-sm md:mx-0 mx-4 space-y-2">
-      ${renderComments(tweet.comments)}
+   
+    <div class="COMMENTS md:mt-6 mt-6 space-y-2">
+    <div class="md:mx-0 mx-6">
+      <span class="font-bold text-xl">COMMENTS</span>
     </div>
 
+    <div class="comments text-sm md:mx-0 mx-4 space-y-1">
+      ${renderComments(tweet.comments)}
+    </div>
+    
     <div class="w-full md:mx-0 mx-4">
       ${renderCommentForm()}
     </div>
@@ -255,7 +259,7 @@ function renderCommentForm() {
   let commentForm = ''
   commentForm = `
     <input type="text" class="mr-2 rounded-lg border px-3 py-2 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Add a comment...">
-    <button class="tweet-comment-button py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none">tweet</button>
+    <button class="tweet-comment-button py-2 px-4 rounded-md shadow-sm font-medium text-white bg-purple-600 focus:outline-none">Comment</button>
   `
   return commentForm
 }
