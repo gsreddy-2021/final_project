@@ -44,17 +44,19 @@ firebase.auth().onAuthStateChanged(async function(user) {
           })
         })
         let tweet = await response.json()
-        console.log(`New Tweet posted by ${username}`)
-        console.log(`${content}`)
+        console.log(`New Tweet posted by ${tweet.username}`)
+        console.log(`${tweet.content}`)
         document.querySelector('#content-text').value = '' //clear the tweet text entry field
         renderTweet(tweet)
       })
 
       let response = await fetch('/.netlify/functions/get_tweets')
       let tweets = await response.json()
+      console.log(tweets)
       for (let i=0; i<tweets.length; i++) {
         let tweet = tweets[i]
         renderTweet(tweet)
+        console.log(tweet)
       }
 
     } else {
@@ -96,6 +98,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 // }
 
 async function renderTweet(tweet) {
+  console.log("in render tweet",tweet.content)
   let tweetId = tweet.id 
   document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
   <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
@@ -104,7 +107,7 @@ async function renderTweet(tweet) {
     </div>
 
     <div class="comments text-sm md:mx-0 mx-4 space-y-2">
-      ${renderTweet(tweet.content)}
+      ${tweet.content}
     </div>
 
     <div class="text-3xl md:mx-0 mx-4">

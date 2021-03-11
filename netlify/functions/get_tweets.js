@@ -9,7 +9,8 @@ exports.handler = async function(event) {
                            .orderBy('created')              // ordered by created
                            .get()
   let tweets = tweetsQuery.docs                             // the tweet documents themselves
-  
+  console.log(tweets)
+
   // loop through the tweet documents
   for (let i=0; i<tweets.length; i++) {
     let tweetId = tweets[i].id                               // the ID for the given tweet
