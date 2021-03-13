@@ -18,10 +18,6 @@ exports.handler = async function(event) {
                               .get()
   let numberOfleftbias = querySnapshot.size
 
-  var e = document.getElementById("leftbias Inclination");
-    var result = e.options[e.selectedIndex].value;
-    alert(result); //ID002
-
   if (numberOfleftbias == 0) {
     await db.collection('leftbias').add({
       tweetId: tweetId,
