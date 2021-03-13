@@ -121,9 +121,14 @@ async function renderTweet(tweet) {
     </div>
 
     <div class="text-3xl md:mx-0 mx-4">
-      <button class="leftbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="28" height="28" border="0" alt="javascript button"></button>
+      <button class="leftbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
       <span class="leftbias">${tweet.leftbias}</span>
-      
+      <button class="rightbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/1200px-Republicanlogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
+      <span class="rightbias">${tweet.rightbias}</span>     
+      <button class="centrist-button"><img src="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo400/2185420/2185420-1596077813536-4c81345438e6f.jpg" width="20" height="20" border="0" alt="javascript button"></button>
+      <span class="centrist">${tweet.centrist}</span> 
+      <button class="biasunknown-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/200px-Question_mark_%28black%29.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
+      <span class="biasunknown">${tweet.biasunknown}</span>  
     </div>
    
     <div class="COMMENTS md:mt-6 mt-6 space-y-2">
@@ -202,6 +207,69 @@ async function renderTweet(tweet) {
       let existingNumberOfleftbias = document.querySelector(`.tweet-${tweetId} .leftbias`).innerHTML
       let newNumberOfleftbias = parseInt(existingNumberOfleftbias) + 1
       document.querySelector(`.tweet-${tweetId} .leftbias`).innerHTML = newNumberOfleftbias
+    }
+  })
+
+  // listen for the rightbias button on this tweet
+  let rightbiasButton = document.querySelector(`.tweet-${tweetId} .rightbias-button`)
+  rightbiasButton.addEventListener('click', async function(event) {
+    event.preventDefault()
+    console.log(`tweet ${tweetId} rightbias button clicked!`)
+    let currentUserId = firebase.auth().currentUser.uid
+
+    let response = await fetch('/.netlify/functions/rightbias', {
+      method: 'POST',
+      body: JSON.stringify({
+        tweetId: tweetId,
+        userId: currentUserId
+      })
+    })
+    if (response.ok) {
+      let existingNumberOfrightbias = document.querySelector(`.tweet-${tweetId} .rightbias`).innerHTML
+      let newNumberOfrightbias = parseInt(existingNumberOfrightbias) + 1
+      document.querySelector(`.tweet-${tweetId} .rightbias`).innerHTML = newNumberOfrightbias
+    }
+  })
+
+  // listen for the centrist button on this tweet
+  let centristButton = document.querySelector(`.tweet-${tweetId} .centrist-button`)
+  centristButton.addEventListener('click', async function(event) {
+    event.preventDefault()
+    console.log(`tweet ${tweetId} centrist button clicked!`)
+    let currentUserId = firebase.auth().currentUser.uid
+
+    let response = await fetch('/.netlify/functions/centrist', {
+      method: 'POST',
+      body: JSON.stringify({
+        tweetId: tweetId,
+        userId: currentUserId
+      })
+    })
+    if (response.ok) {
+      let existingNumberOfcentrist = document.querySelector(`.tweet-${tweetId} .centrist`).innerHTML
+      let newNumberOfcentrist = parseInt(existingNumberOfcentrist) + 1
+      document.querySelector(`.tweet-${tweetId} .centrist`).innerHTML = newNumberOfcentrist
+    }
+  })
+
+  // listen for the biasunknown button on this tweet
+  let biasunknownButton = document.querySelector(`.tweet-${tweetId} .biasunknown-button`)
+  biasunknownButton.addEventListener('click', async function(event) {
+    event.preventDefault()
+    console.log(`tweet ${tweetId} biasunknown button clicked!`)
+    let currentUserId = firebase.auth().currentUser.uid
+
+    let response = await fetch('/.netlify/functions/biasunknown', {
+      method: 'POST',
+      body: JSON.stringify({
+        tweetId: tweetId,
+        userId: currentUserId
+      })
+    })
+    if (response.ok) {
+      let existingNumberOfbiasunknown = document.querySelector(`.tweet-${tweetId} .biasunknown`).innerHTML
+      let newNumberOfbiasunknown = parseInt(existingNumberOfbiasunknown) + 1
+      document.querySelector(`.tweet-${tweetId} .biasunknown`).innerHTML = newNumberOfbiasunknown
     }
   })
 

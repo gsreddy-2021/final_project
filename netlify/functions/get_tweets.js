@@ -21,7 +21,16 @@ exports.handler = async function(event) {
     let misinfoQuery = await db.collection('misinfo')         // misinfo from Firestore
                              .where('tweetId', '==', tweetId) // for the given tweetId
                              .get()
-    let leftbiasQuery = await db.collection('leftbias')        // leftbias from Firestore
+    let leftbiasQuery = await db.collection('leftbias')       // leftbias from Firestore
+                             .where('tweetId', '==', tweetId) // for the given tweetId
+                             .get()
+    let rightbiasQuery = await db.collection('rightbias')     // rightbias from Firestore
+                             .where('tweetId', '==', tweetId) // for the given tweetId
+                             .get()
+    let centristQuery = await db.collection('centrist')       // centrist from Firestore
+                             .where('tweetId', '==', tweetId) // for the given tweetId
+                             .get()
+    let biasunknownQuery = await db.collection('biasunknown') // biasunknown from Firestore
                              .where('tweetId', '==', tweetId) // for the given tweetId
                              .get()
     let commentsQuery = await db.collection('comments')       // comments from Firestore
@@ -41,13 +50,16 @@ exports.handler = async function(event) {
 
     // add a new Object of our own creation to the tweetsData Array
     tweetsData.push({
-      id: tweetId,                                           // the tweet ID
-      content: tweetData.tweetText,                        // the tweet text
-      username: tweetData.username,                          // the username
-      likes: likesQuery.size,                                // number of likes
-      misinfo: misinfoQuery.size,                            // number of misinfo
-      leftbias: leftbiasQuery.size,                        // number of leftbias
-      comments: commentsData                                 // an Array of comments
+      id: tweetId,                                            // the tweet ID
+      content: tweetData.tweetText,                           // the tweet text
+      username: tweetData.username,                           // the username
+      likes: likesQuery.size,                                 // number of likes
+      misinfo: misinfoQuery.size,                             // number of misinfo
+      leftbias: leftbiasQuery.size,                           // number of leftbias
+      rightbias: rightbiasQuery.size,                        // number of rightbias
+      centrist: centristQuery.size,                           // number of centrist
+      biasunknown: biasunknownQuery.size,                     // number of biasunknown
+      comments: commentsData                                  // an Array of comments
     })
   }
   

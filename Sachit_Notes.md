@@ -2,6 +2,13 @@
 
 > Windows button + period gives you the emoji icons list
 
+> Issues log
+1. The website is slow to load the tweets and associated content (likes, misinfo, political bias, etc.)
+2. We need to fix the styling and position for the signout button (maybe have signout in the top nav bar)
+3. Currently a user can vote for all 4 political biases on a tweet, we need to restrict that to just 1
+4. 
+
+
 > Dashboard.html and Index.html (Sign in and Sign out)
 1. When we click on https://elated-jang-b06bff.netlify.app/ it takes us to the index.html page. Here it shows the log out button, I commented it out.
 2. After I login it shows me Welcome "Username" and "signout button". I had to click on "Home" button in top navbar to see the tweets. I fixed it by changing line on index.js from "signInSuccessUrl: 'index.html'" to "signInSuccessUrl: 'dashboard.html'"
@@ -10,10 +17,17 @@
 
 > Netlify functions 
 1. Changed name of "political" to "leftbias" to test
+2. Added rightbias,centrist,biasunknown functions
 
 > Political test
 1. I changed the word "political" to "leftbias" to test the theory that we can add 4 buttons to let users click on left/right/center/unknown. 
 
+> Dashboard.js
+1. Added listen for political bias buttons (Left, Centrist, Right, Unknown)
+
+> get_tweets.js
+1. Added loops for the 4 political biases
+2. Added new Objects of our own creation to the tweetsData Array for political biases
 
 # 9 March 2021
 > I tried converting everything to the kelloggram approach to test
