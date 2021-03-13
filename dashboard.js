@@ -16,13 +16,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
     // Sign-out button
         document.querySelector('.sign-in-or-sign-out').innerHTML = `
        <div class="md:mx-0 mx-4"><span class="font-bold text-6xl center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">Welcome ${user.displayName}!</span></div>
-   `
+       <button class="text-pink-500 underline sign-out">Sign Out</button>
+       `
     // Sign-out button event
-      // document.querySelector('.sign-out').addEventListener('click', function(event) {
-      //   console.log('sign out clicked')
-      //   firebase.auth().signOut()
-      //   document.location.href = 'dashboard.html'
-      // })
+      document.querySelector('.sign-out').addEventListener('click', function(event) {
+        console.log('sign out clicked')
+        firebase.auth().signOut()
+        document.location.href = 'index.html'
+      })
 
     // Listen for the form submit and create/render the new tweet
     document.querySelector('form').addEventListener('submit', async function(event) {
