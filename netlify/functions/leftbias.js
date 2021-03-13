@@ -1,4 +1,4 @@
-// /.netlify/functions/political
+// /.netlify/functions/leftbias
 let firebase = require('./firebase')
 
 exports.handler = async function(event) {
@@ -6,20 +6,26 @@ exports.handler = async function(event) {
   let body = JSON.parse(event.body)
   let tweetId = body.tweetId
   let userId = body.userId
-  
+    
   console.log(`tweet: ${tweetId}`)
   console.log(`user: ${userId}`)
+  
 
-  let querySnapshot = await db.collection('political')
+
+  let querySnapshot = await db.collection('leftbias')
                               .where('tweetId', '==', tweetId)
                               .where('userId', '==', userId)
                               .get()
-  let numberOfpolitical = querySnapshot.size
+  let numberOfleftbias = querySnapshot.size
 
-  if (numberOfpolitical == 0) {
-    await db.collection('political').add({
+  var e = document.getElementById("leftbias Inclination");
+    var result = e.options[e.selectedIndex].value;
+    alert(result); //ID002
+
+  if (numberOfleftbias == 0) {
+    await db.collection('leftbias').add({
       tweetId: tweetId,
-      userId: userId
+      userId: userId      
     })
     return { statusCode: 200 }
   } else {

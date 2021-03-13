@@ -1,10 +1,18 @@
 # 13 March 2021
 
+> Windows button + period gives you the emoji icons list
+
 > Dashboard.html and Index.html (Sign in and Sign out)
 1. When we click on https://elated-jang-b06bff.netlify.app/ it takes us to the index.html page. Here it shows the log out button, I commented it out.
 2. After I login it shows me Welcome "Username" and "signout button". I had to click on "Home" button in top navbar to see the tweets. I fixed it by changing line on index.js from "signInSuccessUrl: 'index.html'" to "signInSuccessUrl: 'dashboard.html'"
 3. If user was to signout, they had to click on "Log Out" on the top nav bar and then it takes them to "index.html" which shows "Welcome XXXX" with a "Sign Out" button. On Dashboard.js I added "button class="text-pink-500 underline sign-out">Sign Out< /button" to the signout button and uncommented the signout button event code. 
 4. We need to fix the styling of the signout button here later.
+
+> Netlify functions 
+1. Changed name of "political" to "leftbias" to test
+
+> Political test
+1. I changed the word "political" to "leftbias" to test the theory that we can add 4 buttons to let users click on left/right/center/unknown. 
 
 
 # 9 March 2021

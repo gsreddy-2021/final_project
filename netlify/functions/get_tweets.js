@@ -21,7 +21,7 @@ exports.handler = async function(event) {
     let misinfoQuery = await db.collection('misinfo')         // misinfo from Firestore
                              .where('tweetId', '==', tweetId) // for the given tweetId
                              .get()
-    let politicalQuery = await db.collection('political')        // political from Firestore
+    let leftbiasQuery = await db.collection('leftbias')        // leftbias from Firestore
                              .where('tweetId', '==', tweetId) // for the given tweetId
                              .get()
     let commentsQuery = await db.collection('comments')       // comments from Firestore
@@ -46,7 +46,7 @@ exports.handler = async function(event) {
       username: tweetData.username,                          // the username
       likes: likesQuery.size,                                // number of likes
       misinfo: misinfoQuery.size,                            // number of misinfo
-      political: politicalQuery.size,                        // number of political
+      leftbias: leftbiasQuery.size,                        // number of leftbias
       comments: commentsData                                 // an Array of comments
     })
   }

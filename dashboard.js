@@ -117,12 +117,13 @@ async function renderTweet(tweet) {
 
     <div class="text-3xl md:mx-0 mx-4">
       <button class="misinfo-button">✅</button>
-      <span class="misinfo">${tweet.misinfo}</span>
+      <span class="misinfo">${tweet.misinfo}</span>      
     </div>
 
     <div class="text-3xl md:mx-0 mx-4">
-      <button class="political-button">🍕</button>
-      <span class="political">${tweet.political}</span>
+      <button class="leftbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="28" height="28" border="0" alt="javascript button"></button>
+      <span class="leftbias">${tweet.leftbias}</span>
+      
     </div>
    
     <div class="COMMENTS md:mt-6 mt-6 space-y-2">
@@ -183,14 +184,14 @@ async function renderTweet(tweet) {
   })
 
 
-  // listen for the political button on this tweet
-  let politicalButton = document.querySelector(`.tweet-${tweetId} .political-button`)
-  politicalButton.addEventListener('click', async function(event) {
+  // listen for the leftbias button on this tweet
+  let leftbiasButton = document.querySelector(`.tweet-${tweetId} .leftbias-button`)
+  leftbiasButton.addEventListener('click', async function(event) {
     event.preventDefault()
-    console.log(`tweet ${tweetId} political button clicked!`)
+    console.log(`tweet ${tweetId} leftbias button clicked!`)
     let currentUserId = firebase.auth().currentUser.uid
 
-    let response = await fetch('/.netlify/functions/political', {
+    let response = await fetch('/.netlify/functions/leftbias', {
       method: 'POST',
       body: JSON.stringify({
         tweetId: tweetId,
@@ -198,9 +199,9 @@ async function renderTweet(tweet) {
       })
     })
     if (response.ok) {
-      let existingNumberOfPolitical = document.querySelector(`.tweet-${tweetId} .political`).innerHTML
-      let newNumberOfPolitical = parseInt(existingNumberOfPolitical) + 1
-      document.querySelector(`.tweet-${tweetId} .political`).innerHTML = newNumberOfPolitical
+      let existingNumberOfleftbias = document.querySelector(`.tweet-${tweetId} .leftbias`).innerHTML
+      let newNumberOfleftbias = parseInt(existingNumberOfleftbias) + 1
+      document.querySelector(`.tweet-${tweetId} .leftbias`).innerHTML = newNumberOfleftbias
     }
   })
 
