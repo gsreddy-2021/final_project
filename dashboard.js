@@ -13,11 +13,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
       email: user.email
     })
 
-    // Sign-out button
+    // Sign-out button 
         document.querySelector('.sign-in-or-sign-out').innerHTML = `
        <div class="md:mx-0 mx-4"><span class="font-bold text-6xl center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">Welcome ${user.displayName}!</span></div>
-       <button class="text-pink-500 underline sign-out">Sign Out</button>
        `
+      // document.querySelector('.topnav').insertAdjacentHTML = `
+      //   
+      //   `
+    
     // Sign-out button event
       document.querySelector('.sign-out').addEventListener('click', function(event) {
         console.log('sign out clicked')
@@ -46,9 +49,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
         let tweet = await response.json()
         console.log(`New Tweet posted by ${tweet.username}`)
         console.log(`${tweet.content}`)
-        document.querySelector('#content-text').value = '' //clear the tweet text entry field
         renderTweet(tweet)
-      })
+        document.querySelector('#content-text').value = '' //clear the tweet text entry field
+        })
 
       let response = await fetch('/.netlify/functions/get_tweets')
       let tweets = await response.json()
@@ -106,7 +109,7 @@ async function renderTweet(tweet) {
       <span class="font-bold text-xl">${tweet.username}</span>
     </div>
 
-    <div class="comments text-sm md:mx-0 mx-4 space-y-2">
+    <div class="content text-sm md:mx-0 mx-4 space-y-2">
       ${tweet.content}
     </div>
 
@@ -294,12 +297,12 @@ async function renderTweet(tweet) {
     // call our back-end lambda using the new comment's data
     await fetch('/.netlify/functions/create_comment', {
       method: 'POST',
-      body: JSON.stringify(newComment)
+      body: JSON.stringify(newComment) 
     })
 
     // insert the new comment into the DOM, in the div with the class name "comments", for this tweet
     let commentsElement = document.querySelector(`.tweet-${tweetId} .comments`)
-    commentsElement.insertAdjacentHTML('beforeend', renderComment(newComment))
+    commentsElement.insertAdjacentHTML('afterbegin', renderComment(newComment))
 
     // clears the comment input
     tweetCommentInput.value = ''

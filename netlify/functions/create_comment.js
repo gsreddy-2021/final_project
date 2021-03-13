@@ -7,6 +7,7 @@ exports.handler = async function (event) {
 
   newComment.timestamp = firebase.firestore.FieldValue.serverTimestamp()
 
+  // cng Saturday, 12:31pm noticed that new tweets were going in the wrong place
   let docRef = await db.collection('comments').add(newComment)
   newComment.id = docRef.id
 
