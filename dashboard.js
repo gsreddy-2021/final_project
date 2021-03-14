@@ -99,7 +99,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
 
         document.querySelector('#tweet-text').value = '' //clear the tweet text entry field
-// BEGIN DUPLICATION OF CODE
+// BEGIN DUPLICATION OF CODE EXCEPT TWEETID == TWEET.ID
 // BEGIN DUPLICATION OF CODE
 // BEGIN DUPLICATION OF CODE
 // BEGIN DUPLICATION OF CODE
