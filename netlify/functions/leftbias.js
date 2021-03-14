@@ -19,7 +19,7 @@ exports.handler = async function(event) {
   .get()
   let numberOfleft = leftSnapshot.size
 
-  let rightSnapshot = await db.collection('leftbias')
+  let rightSnapshot = await db.collection('rightbias')
   .where('tweetId', '==', tweetId)
   .where('userId', '==', userId)
   .get()
