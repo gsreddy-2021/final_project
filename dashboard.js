@@ -67,7 +67,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
           </div>
       
           <div class="text-3xl md:mx-0 mx-4">
-            <button class="misinfo-button">✅</button>
+            <button class="misinfo-button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS49nshYXDeQF7k_olZscagdY32oKdeOr80PA&usqp=CAU" width="20" height="20" border="0" alt="javascript button"></button>
             <span class="misinfo">0</span>      
           </div>
       
@@ -310,7 +310,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
             </div>
         
             <div class="text-3xl md:mx-0 mx-4">
-              <button class="misinfo-button">✅</button>
+            <button class="misinfo-button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS49nshYXDeQF7k_olZscagdY32oKdeOr80PA&usqp=CAU" width="20" height="20" border="0" alt="javascript button"></button>
               <span class="misinfo">${tweet.misinfo}</span>      
             </div>
         
@@ -358,7 +358,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
             </div>
         
             <div class="text-3xl md:mx-0 mx-4">
-              <button class="misinfo-button">✅</button>
+            <button class="misinfo-button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS49nshYXDeQF7k_olZscagdY32oKdeOr80PA&usqp=CAU" width="20" height="20" border="0" alt="javascript button"></button>
               <span class="misinfo">${tweet.misinfo}</span>
               <span>Suspicious Tweet, click to hide</span>      
             </div>
