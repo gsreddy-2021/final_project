@@ -152,51 +152,105 @@ firebase.auth().onAuthStateChanged(async function(user) {
 async function renderTweet(tweet) {
   console.log("in render tweet",tweet.content)
   let tweetId = tweet.id 
-  document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
-  <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
-    <div class="md:mx-0 mx-4">
-      <span class="font-bold text-xl">${tweet.username}</span>
-    </div>
+  // cng adding logic to check if the misinfo score is > 5
 
-    <div class="content text-sm md:mx-0 mx-4 space-y-2">
-      ${tweet.content}
+  if (tweet.misinfo < 5) { 
+    document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
+    <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
+      <div class="md:mx-0 mx-4">
+        <span class="font-bold text-xl">${tweet.username}</span>
+      </div>
+  
+      <div class="content text-sm md:mx-0 mx-4 space-y-2">
+        ${tweet.content}
+      </div>
+  
+      <div class="text-3xl md:mx-0 mx-4">
+        <button class="like-button">❤️</button>
+        <span class="likes">${tweet.likes}</span>
+      </div>
+  
+      <div class="text-3xl md:mx-0 mx-4">
+        <button class="misinfo-button">✅</button>
+        <span class="misinfo">${tweet.misinfo}</span>      
+      </div>
+  
+      <div class="text-3xl md:mx-0 mx-4">
+        <button class="leftbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
+        <span class="leftbias">${tweet.leftbias}</span>
+        <button class="rightbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/1200px-Republicanlogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
+        <span class="rightbias">${tweet.rightbias}</span>     
+        <button class="centrist-button"><img src="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo400/2185420/2185420-1596077813536-4c81345438e6f.jpg" width="20" height="20" border="0" alt="javascript button"></button>
+        <span class="centrist">${tweet.centrist}</span> 
+        <button class="biasunknown-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/200px-Question_mark_%28black%29.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
+        <span class="biasunknown">${tweet.biasunknown}</span>  
+      </div>
+     
+      <div class="COMMENTS md:mt-6 mt-6 space-y-2">
+      <div class="md:mx-0 mx-6">
+        <span class="font-bold text-xl">COMMENTS</span>
+      </div>
+  
+      <div class="comments text-sm md:mx-0 mx-4 space-y-1">
+        ${renderComments(tweet.comments)}
+      </div>
+      
+      <div class="w-full md:mx-0 mx-4">
+        ${renderCommentForm()}
+      </div>
     </div>
+  `)
+  } 
+  // if we don't want to show the tweet, remove this portion and add logic to delete the tweet from firebase
+  else {
+    document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
+    <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
+      <div class="md:mx-0 mx-4">
+        <span class="font-bold text-xl">${tweet.username}</span>
+      </div>
+  
+      <div class="content text-sm md:mx-0 mx-4 space-y-2">
+        ${tweet.content}
+      </div>
+  
+      <div class="text-3xl md:mx-0 mx-4">
+        <button class="like-button">❤️</button>
+        <span class="likes">${tweet.likes}</span>
+      </div>
+  
+      <div class="text-3xl md:mx-0 mx-4">
+        <button class="misinfo-button">✅</button>
+        <span class="misinfo">${tweet.misinfo}</span>
+        <span>Suspicious Tweet, click to hide</span>      
+      </div>
+  
+      <div class="text-3xl md:mx-0 mx-4">
+        <button class="leftbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
+        <span class="leftbias">${tweet.leftbias}</span>
+        <button class="rightbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/1200px-Republicanlogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
+        <span class="rightbias">${tweet.rightbias}</span>     
+        <button class="centrist-button"><img src="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo400/2185420/2185420-1596077813536-4c81345438e6f.jpg" width="20" height="20" border="0" alt="javascript button"></button>
+        <span class="centrist">${tweet.centrist}</span> 
+        <button class="biasunknown-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/200px-Question_mark_%28black%29.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
+        <span class="biasunknown">${tweet.biasunknown}</span>  
+      </div>
+     
+      <div class="COMMENTS md:mt-6 mt-6 space-y-2">
+      <div class="md:mx-0 mx-6">
+        <span class="font-bold text-xl">COMMENTS</span>
+      </div>
+  
+      <div class="comments text-sm md:mx-0 mx-4 space-y-1">
+        ${renderComments(tweet.comments)}
+      </div>
+      
+      <div class="w-full md:mx-0 mx-4">
+        ${renderCommentForm()}
+      </div>
+    </div>
+  `)
+  }
 
-    <div class="text-3xl md:mx-0 mx-4">
-      <button class="like-button">❤️</button>
-      <span class="likes">${tweet.likes}</span>
-    </div>
-
-    <div class="text-3xl md:mx-0 mx-4">
-      <button class="misinfo-button">✅</button>
-      <span class="misinfo">${tweet.misinfo}</span>      
-    </div>
-
-    <div class="text-3xl md:mx-0 mx-4">
-      <button class="leftbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
-      <span class="leftbias">${tweet.leftbias}</span>
-      <button class="rightbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/1200px-Republicanlogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
-      <span class="rightbias">${tweet.rightbias}</span>     
-      <button class="centrist-button"><img src="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo400/2185420/2185420-1596077813536-4c81345438e6f.jpg" width="20" height="20" border="0" alt="javascript button"></button>
-      <span class="centrist">${tweet.centrist}</span> 
-      <button class="biasunknown-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/200px-Question_mark_%28black%29.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
-      <span class="biasunknown">${tweet.biasunknown}</span>  
-    </div>
-   
-    <div class="COMMENTS md:mt-6 mt-6 space-y-2">
-    <div class="md:mx-0 mx-6">
-      <span class="font-bold text-xl">COMMENTS</span>
-    </div>
-
-    <div class="comments text-sm md:mx-0 mx-4 space-y-1">
-      ${renderComments(tweet.comments)}
-    </div>
-    
-    <div class="w-full md:mx-0 mx-4">
-      ${renderCommentForm()}
-    </div>
-  </div>
-`)
 
 // listen for the like button on this tweet
   let likeButton = document.querySelector(`.tweet-${tweetId} .like-button`)
@@ -233,10 +287,18 @@ async function renderTweet(tweet) {
         userId: currentUserId
       })
     })
+
+  // add logic to delete a tweet if it gets at least 5 misinfo votes
     if (response.ok) {
       let existingNumberOfMisinfo = document.querySelector(`.tweet-${tweetId} .misinfo`).innerHTML
       let newNumberOfMisinfo = parseInt(existingNumberOfMisinfo) + 1
-      document.querySelector(`.tweet-${tweetId} .misinfo`).innerHTML = newNumberOfMisinfo
+      if (newNumberOfMisinfo < 5) {
+        document.querySelector(`.tweet-${tweetId} .misinfo`).innerHTML = newNumberOfMisinfo
+      } else {
+        // delete that bad boy
+        document.querySelector(`.tweet-${tweetId}`).innerHTML = ''
+      }
+      
     }
   })
 

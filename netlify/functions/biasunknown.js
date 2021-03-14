@@ -12,13 +12,34 @@ exports.handler = async function(event) {
   
 
 
-  let querySnapshot = await db.collection('biasunknown')
-                              .where('tweetId', '==', tweetId)
-                              .where('userId', '==', userId)
-                              .get()
-  let numberOfbiasunknown = querySnapshot.size
+//cng adding logic to check if a user has scored the bias
+let leftSnapshot = await db.collection('leftbias')
+.where('tweetId', '==', tweetId)
+.where('userId', '==', userId)
+.get()
+let numberOfleft = leftSnapshot.size
 
-  if (numberOfbiasunknown == 0) {
+let rightSnapshot = await db.collection('leftbias')
+.where('tweetId', '==', tweetId)
+.where('userId', '==', userId)
+.get()
+let numberOfright = rightSnapshot.size
+
+let centerSnapshot = await db.collection('centrist')
+                            .where('tweetId', '==', tweetId)
+                            .where('userId', '==', userId)
+                            .get()
+let numberOfcentrist = centerSnapshot.size
+
+let unknownSnapshot = await db.collection('biasunknown')
+.where('tweetId', '==', tweetId)
+.where('userId', '==', userId)
+.get()
+let numberOfbiasunknown = unknownSnapshot.size
+
+let politiscore = numberOfleft + numberOfright + numberOfcentrist + numberOfbiasunknown
+
+if (politiscore == 0) {
     await db.collection('biasunknown').add({
       tweetId: tweetId,
       userId: userId      

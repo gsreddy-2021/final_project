@@ -16,7 +16,12 @@ exports.handler = async function(event) {
                               .get()
   let numberOfmisinfo = querySnapshot.size
 
-  if (numberOfmisinfo == 0) {
+  // cng removing to test something
+  if (
+    1==1
+    //numberOfmisinfo == 0
+    ) 
+  {
     await db.collection('misinfo').add({
       tweetId: tweetId,
       userId: userId
