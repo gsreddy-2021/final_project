@@ -42,7 +42,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
             userId: user.uid,
             username: tweetUsername,
             content: tweetText, //content is replacement for imageURL
-        //    tweetTimeStamp: tweetTimeStamp,
         //    tweetRating: tweetRating
           })
         })
@@ -57,7 +56,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
             <span class="font-bold text-5xl">${tweet.username}</span>
           </div>
       
-          <div class="content text-sm md:mx-0 mx-4 space-y-2">
+          <div class="content
+          text-1xl md:mx-0 mx-4 space-y-2">
             ${tweet.tweetText}
           </div>
       
@@ -291,31 +291,37 @@ firebase.auth().onAuthStateChanged(async function(user) {
       async function renderTweet(tweet) {
         console.log("in render tweet",tweet.content)
         let tweetId = tweet.id 
+        console.log(tweet)
         // cng adding logic to check if the misinfo score is > 5
       
         if (tweet.misinfo < 5) { 
           document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
-          <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
+          <div class="tweet-${tweetId} text-1xl md:mt-16 mt-8 space-y-8">
             <div class="md:mx-0 mx-4">
-              <span class="font-bold text-xl">${tweet.username}</span>
+              <span class="font-bold text-2xl">${tweet.username}</span>
             </div>
         
-            <div class="content text-sm md:mx-0 mx-4 space-y-2">
+         
+            <div class="border-double border-8 border-light-blue500 content text-2xl md:mx-0 mx-4 space-y-2">
               ${tweet.content}
+              <div class="content text-xl md:mx-0 mx-4 space-y-2">
+              ${new Date(tweet.created).toLocaleDateString()}
             </div>
-        
-            <div class="text-3xl md:mx-0 mx-4">
+           
+
+            <div class="text-1xl md:mx-0 mx-4">
               <button class="like-button">❤️</button>
               <span class="likes">${tweet.likes}</span>
             </div>
         
-            <div class="text-3xl md:mx-0 mx-4">
+            <div class="text-1xl md:mx-0 mx-4">
             <button class="misinfo-button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS49nshYXDeQF7k_olZscagdY32oKdeOr80PA&usqp=CAU" width="20" height="20" border="0" alt="javascript button"></button>
               <span class="misinfo">${tweet.misinfo}</span>      
             </div>
         
-            <div class="text-3xl md:mx-0 mx-4">
-              <button class="leftbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
+            <div class="text-1xl md:mx-0 mx-4">
+         
+              <button class="leftbias-button"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
               <span class="leftbias">${tweet.leftbias}</span>
               <button class="rightbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/1200px-Republicanlogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
               <span class="rightbias">${tweet.rightbias}</span>     
@@ -324,6 +330,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
               <button class="biasunknown-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/200px-Question_mark_%28black%29.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
               <span class="biasunknown">${tweet.biasunknown}</span>  
             </div>
+    
            
             <div class="COMMENTS md:mt-6 mt-6 space-y-2">
             <div class="md:mx-0 mx-6">
@@ -345,7 +352,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
           document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
           <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
             <div class="md:mx-0 mx-4">
-              <span class="font-bold text-xl">${tweet.username}</span>
+              <span class="font-bold text-4xl">${tweet.username}</span>
             </div>
         
             <div class="content text-sm md:mx-0 mx-4 space-y-2">

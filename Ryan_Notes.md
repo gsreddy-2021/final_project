@@ -8,3 +8,8 @@ Wenesday, March 10th
     Sachit's problem with the Comments not stacking properly, I cannot recreate. I added a "Comments" header to the comments to clarify the transtion to that section. 
 
     The commnet button text has been changed from "tweet" to "Comment"
+
+Wenesday, March 10th
+10:30 PM CST 
+
+line 309 for time display
