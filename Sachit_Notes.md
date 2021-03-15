@@ -1,5 +1,9 @@
 # 14 March 2021
 
+> Dashboard.js
+1. Added 2 & emsp; at the politicial inclination ratings area. This adds almost 8 spaces between them.
+2. Added color to political incl. ratings
+
 > CSS folder
 1. Moved the CSS files into that folder
 

@@ -50,13 +50,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
           <div class="md:mx-0 mx-4">
             <span class="font-bold text-5xl">${tweet.username}</span>
           </div>
-      
-          <div class="content
-          text-1xl md:mx-0 mx-4 space-y-2">
+            
+          
+            <div class="content 
+            text-1xl md:mx-0 mx-4 space-y-2">
             ${tweet.tweetText}   
-          </div>
-      
-          <div class="text-3xl md:mx-0 mx-4">
+            </div>       
+              
+            <div class="text-3xl md:mx-0 mx-4">
             <button class="like-button">❤️</button>
             <span class="likes">${tweet.likes}</span>
           </div>
@@ -75,7 +76,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
             <span class="centrist">0</span> 
             <button class="biasunknown-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/200px-Question_mark_%28black%29.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
             <span class="biasunknown">0</span>  
-          </div>
+          </div>    
          
           <div class="COMMENTS md:mt-6 mt-6 space-y-2">
           <div class="md:mx-0 mx-6">
@@ -294,42 +295,36 @@ firebase.auth().onAuthStateChanged(async function(user) {
           <div class="tweet-${tweetId} text-1xl md:mt-16 mt-8 space-y-8">
             <div class="md:mx-0 mx-4">
               <span class="font-bold text-2xl">${tweet.username}</span>
-            </div>
-        
+            </div>        
          
             <div class="border-double border-8 border-light-blue500 content text-2xl md:mx-0 mx-4 space-y-2">
               ${tweet.content}
               <div class="content text-xl md:mx-0 mx-4 space-y-2">
-              ${new Date(tweet.created).toLocaleDateString()}            
-            </div>
-           
+              <br> <em> ${new Date(tweet.created).toLocaleDateString()} </em>          
+            </div>           
 
             <div class="text-1xl md:mx-0 mx-4">
               <button class="like-button">❤️</button>
               <span class="likes">${tweet.likes}</span>
-            </div>
-        
-            <div class="text-1xl md:mx-0 mx-4">
-            <button class="misinfo-button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS49nshYXDeQF7k_olZscagdY32oKdeOr80PA&usqp=CAU" width="20" height="20" border="0" alt="javascript button"></button>
+              <br>
+              <small> <em> Flagged for Misinformation: </em> </small>
+              <button class="misinfo-button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS49nshYXDeQF7k_olZscagdY32oKdeOr80PA&usqp=CAU" width="20" height="20" border="0" alt="javascript button"></button>
               <span class="misinfo">${tweet.misinfo}</span>      
-            </div>
-        
-            <div class="text-1xl md:mx-0 mx-4">
-         
+              <br>
+              <small> <em> Political Inclination: </em> </small>
               <button class="leftbias-button"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
-              <span class="leftbias">${tweet.leftbias}</span>
+              <span class="leftbias" style="color:blue;">${tweet.leftbias}</span> &emsp; &emsp;
               <button class="rightbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/1200px-Republicanlogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
-              <span class="rightbias">${tweet.rightbias}</span>     
+              <span class="rightbias" style="color:red;">${tweet.rightbias}</span> &emsp; &emsp; 
               <button class="centrist-button"><img src="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo400/2185420/2185420-1596077813536-4c81345438e6f.jpg" width="20" height="20" border="0" alt="javascript button"></button>
-              <span class="centrist">${tweet.centrist}</span> 
+              <span class="centrist" style="color:green;">${tweet.centrist}</span> &emsp; &emsp;
               <button class="biasunknown-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/200px-Question_mark_%28black%29.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
-              <span class="biasunknown">${tweet.biasunknown}</span>  
-            </div>
-    
-           
-            <div class="COMMENTS md:mt-6 mt-6 space-y-2">
+              <span class="biasunknown">${tweet.biasunknown}</span>  &emsp; &emsp;
+            </div>    
+                       
             <div class="md:mx-0 mx-6">
-              <span class="font-bold text-xl">COMMENTS</span>
+              <br>
+              <span class="font-bold">COMMENTS</span>
             </div>
         
             <div class="comments text-sm md:mx-0 mx-4 space-y-1">
@@ -347,38 +342,44 @@ firebase.auth().onAuthStateChanged(async function(user) {
           document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
           <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
             <div class="md:mx-0 mx-4">
-              <span class="font-bold text-4xl">${tweet.username}</span>
-            </div>
-        
-            <div class="content text-sm md:mx-0 mx-4 space-y-2">
+              <span class="font-bold text-2xl">${tweet.username}</span>
+            </div>        
+     
+            <div class="border-double border-8 border-light-blue500 content text-2xl md:mx-0 mx-4 space-y-2">
               ${tweet.content}
-            </div>
-        
-            <div class="text-3xl md:mx-0 mx-4">
+              <div class="content text-xl md:mx-0 mx-4 space-y-2">
+              <br> <em> ${new Date(tweet.created).toLocaleDateString()} </em>          
+            </div>  
+
+            <div class="text-1xl md:mx-0 mx-4">
               <button class="like-button">❤️</button>
               <span class="likes">${tweet.likes}</span>
             </div>
-        
+
             <div class="text-3xl md:mx-0 mx-4">
+            <br>
             <button class="misinfo-button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS49nshYXDeQF7k_olZscagdY32oKdeOr80PA&usqp=CAU" width="20" height="20" border="0" alt="javascript button"></button>
               <span class="misinfo">${tweet.misinfo}</span>
               <span>Suspicious Tweet, click to hide</span>      
             </div>
-        
-            <div class="text-3xl md:mx-0 mx-4">
-              <button class="leftbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
-              <span class="leftbias">${tweet.leftbias}</span>
+
+            <div class="text-1xl md:mx-0 mx-4">              
+              <br>
+              <small> <em> Political Inclination: </em> </small>
+              <button class="leftbias-button"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
+              <span class="leftbias" style="color:blue;">${tweet.leftbias}</span> &emsp; &emsp;
               <button class="rightbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/1200px-Republicanlogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
-              <span class="rightbias">${tweet.rightbias}</span>     
+              <span class="rightbias" style="color:red;">${tweet.rightbias}</span> &emsp; &emsp; 
               <button class="centrist-button"><img src="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo400/2185420/2185420-1596077813536-4c81345438e6f.jpg" width="20" height="20" border="0" alt="javascript button"></button>
-              <span class="centrist">${tweet.centrist}</span> 
+              <span class="centrist" style="color:green;">${tweet.centrist}</span> &emsp; &emsp;
               <button class="biasunknown-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/200px-Question_mark_%28black%29.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
-              <span class="biasunknown">${tweet.biasunknown}</span>  
-            </div>
-           
-            <div class="COMMENTS md:mt-6 mt-6 space-y-2">
+              <span class="biasunknown">${tweet.biasunknown}</span>  &emsp; &emsp;
+            </div>                                     
+        
+          
             <div class="md:mx-0 mx-6">
-              <span class="font-bold text-xl">COMMENTS</span>
+              <br>
+              <span class="font-bold">COMMENTS</span>
             </div>
         
             <div class="comments text-sm md:mx-0 mx-4 space-y-1">
