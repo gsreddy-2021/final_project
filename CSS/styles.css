@@ -13,7 +13,7 @@ Global
 
 body {
   background-color: black;
-  background-image: url("pictures/background-stars.gif");
+  background-image: url("/pictures/background-stars.gif");
   color: red;
   display: grid;
   grid-template-rows: .8fr .2fr;
