@@ -51,29 +51,31 @@ firebase.auth().onAuthStateChanged(async function(user) {
             <span class="font-bold text-5xl">${tweet.username}</span>
           </div>
             
-          
+                  
             <div class="content 
             text-1xl md:mx-0 mx-4 space-y-2">
             ${tweet.tweetText}   
-            </div>       
-              
-            <div class="text-3xl md:mx-0 mx-4">
-            <button class="like-button">❤️</button>
-            <span class="likes">${tweet.likes}</span>
-          </div>
+            </div>   
+
+            <div class="text-2xl md:mx-0 mx-4">
+              <button class="like-button">❤️</button>
+              <span class="likes">${tweet.likes}</span>              
+            </div>
       
-          <div class="text-3xl md:mx-0 mx-4">
+          <div class="text-2xl md:mx-0 mx-4">
+            <br>            
             <button class="misinfo-button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS49nshYXDeQF7k_olZscagdY32oKdeOr80PA&usqp=CAU" width="20" height="20" border="0" alt="javascript button"></button>
             <span class="misinfo">0</span>      
           </div>
       
           <div class="text-2xl md:mx-0 mx-4">
+            <br>
             <button class="leftbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
-            <span class="leftbias">0</span>
+            <span class="leftbias">0</span> &emsp; &emsp;
             <button class="rightbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/1200px-Republicanlogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
-            <span class="rightbias">0</span>     
+            <span class="rightbias">0</span> &emsp; &emsp;   
             <button class="centrist-button"><img src="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo400/2185420/2185420-1596077813536-4c81345438e6f.jpg" width="20" height="20" border="0" alt="javascript button"></button>
-            <span class="centrist">0</span> 
+            <span class="centrist">0 &emsp; &emsp; </span>
             <button class="biasunknown-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/200px-Question_mark_%28black%29.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
             <span class="biasunknown">0</span>  
           </div>    
