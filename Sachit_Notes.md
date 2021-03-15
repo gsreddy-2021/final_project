@@ -1,5 +1,8 @@
 # 14 March 2021
 
+> Netlify functions:
+1. Fixed a bug on centrist, biasunknown and rightbias (We used leftbias where we were supposed to use rightbias)
+
 > Dashboard.js
 1. Added 2 & emsp; at the politicial inclination ratings area. This adds almost 8 spaces between them.
 2. Added color to political incl. ratings
