@@ -50,9 +50,12 @@ Space Jam Section
 =======================================
 */
 
+/*
+background: url("pictures/space-jam-logo.jpg");
+*/
+
 main {
   grid-area: main;
-  background: url("pictures/space-jam-logo.gif");
   background-position: center;
   background-repeat: no-repeat;
   height: 80vh;
