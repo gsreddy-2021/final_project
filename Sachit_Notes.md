@@ -1,3 +1,19 @@
+# 14 March 2021
+
+> CSS folder
+1. Moved the CSS files into that folder
+
+> About.html
+1. Used Space Jam site as inspiration to create it. This "https://github.com/wittenbrock/space-jam" helped
+2. Added this "https://testmysite.io/604ea09247c75b1389bb2359/elated-jang-b06bff.netlify.app" as a surprise
+
+> Pictures
+1. Moved pics into pictures folder
+
+> Scoring.html
+1. Added a short guide to how we score/let people vote
+
+----------------
 # 13 March 2021
 
 > Windows button + period gives you the emoji icons list
@@ -5,9 +21,7 @@
 > Issues log
 1. The website is slow to load the tweets and associated content (likes, misinfo, political bias, etc.)
 2. We need to fix the styling and position for the signout button (maybe have signout in the top nav bar)
-3. Currently a user can vote for all 4 political biases on a tweet, we need to restrict that to just 1
-4. 
-
+3. Currently a user can vote for all 4 political biases on a tweet, we need to restrict that to just 14. 
 
 > Dashboard.html and Index.html (Sign in and Sign out)
 1. When we click on https://elated-jang-b06bff.netlify.app/ it takes us to the index.html page. Here it shows the log out button, I commented it out.
@@ -29,6 +43,7 @@
 1. Added loops for the 4 political biases
 2. Added new Objects of our own creation to the tweetsData Array for political biases
 
+----------------
 # 9 March 2021
 > I tried converting everything to the kelloggram approach to test
 
@@ -37,7 +52,7 @@
 > Dashboard.html
 1. Commented out a significant portion of the code to recode aligning with class Kelloggram structure
 
-
+----------------
 # 8 March 2021
 > Session xx:00 pm
 
@@ -49,7 +64,7 @@
 2. Added a style element for ease for visibility between 2 tweets *div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8" style="background-color:DeepSkyBlue;"*
 3. Tried to show tweets from account after signing out and signing back in. I am able to list a few attributes but can't figure out what the issue is that is stopping me from listing the tweet content, tweet timestamp, etc.
 
-
+----------------
 # 6 March 2021
 > Session xx:00 am
 1. KIEI451 Final should be the project name on our Firebase console.

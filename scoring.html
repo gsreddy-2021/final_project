@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Scoring Guide</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" type="text/css">
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.3/firebase-ui-auth.css" />
+        <link type="text/css" rel="stylesheet" href="/CSS/twitter.css" /> <!--added this 6Mar21-->
+    
+        <style>
+            /* Header/Logo Title */
+            .header {
+            padding: 60px;
+            text-align: center;
+            background: #1abc9c;
+            color: white;
+            font-size: 30px;
+            }
+
+            /* Page Content */
+            .content {padding:20px;}
+        </style>
+    </head> 
+
+<body>
+    <div class="topnav">
+        <a href="dashboard.html">Home</a> 
+        <a href="https://twitter.com/explore/tabs/trending">Trending</a>
+        <!-- <a href="scoring.html">Scoring Guide</a> --> 
+        <!-- cng changed 'about' to lowercase -->
+        <a href="about.html">About Us</a>
+        <!-- <a class="active" href="dashboard.html">Log Out</a> -->
+        <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category"> <!--search bar-->          
+    </div>
+
+    <div class="header">
+        <h1>Scoring Guide</h1>
+        <p>Our subjective guidelines towards scoring your tweets</p>
+    </div>
+
+    <div class="content">
+        <ul>
+            <li> <b>Misinformation:</b> </li>
+            <ol>
+               <li>If more than 5 users have rated the tweet as misinfo, an option to hide the tweet is presented.</li>  
+                <li>Each user can vote only once. </li>
+            </ol>
+
+            <li> <br> <b>Political Bias:</b> </li>
+            <ol>
+                <li>There are 4 options available.</li>  
+                <li>Left bias wtih Democrats logo.</li>   
+                <li>Right bias with Republican logo.</li>
+                <li>Centrists with Centrist logo.</li>
+                <li>Bias unknown with a Question mark.</li>
+                <li>Each user can vote only once. </li>
+            </ol>               
+            
+        </ul>        
+    </div>
+
+</body>
+</html>
