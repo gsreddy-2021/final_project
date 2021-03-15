@@ -32,24 +32,19 @@ firebase.auth().onAuthStateChanged(async function(user) {
     document.querySelector('form').addEventListener('submit', async function(event) {
         event.preventDefault()
         let tweetUsername = user.displayName
-        let tweetText = document.querySelector('#tweet-text').value
-      //  let tweetRating = 0
-      //  let tweetTimeStamp = firebase.firestore.FieldValue.serverTimestamp()
-      //  let tweetTimeStampDatenTime = new Date() //This resolved the timestamp issue
+        let tweetText = document.querySelector('#tweet-text').value        
         let response = await fetch ('/.netlify/functions/create_tweet', {
           method: 'POST',
           body: JSON.stringify({
             userId: user.uid,
             username: tweetUsername,
-            content: tweetText, //content is replacement for imageURL
-        //    tweetRating: tweetRating
+            content: tweetText, //content is replacement for imageURL       
           })
         })
         let tweet = await response.json()
         console.log(tweet)
         console.log(`New Tweet posted by ${tweet.username}`)
         // cng tweets are loading as null. changing from renderTweet to hardcoded
-        //renderTweet(tweet)
         document.querySelector('.tweets').insertAdjacentHTML('beforeend',`
         <div class="tweet-${tweet.id} md:mt-16 mt-8 space-y-8">
           <div class="md:mx-0 mx-4">
@@ -58,7 +53,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       
           <div class="content
           text-1xl md:mx-0 mx-4 space-y-2">
-            ${tweet.tweetText}
+            ${tweet.tweetText}   
           </div>
       
           <div class="text-3xl md:mx-0 mx-4">
@@ -305,7 +300,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
             <div class="border-double border-8 border-light-blue500 content text-2xl md:mx-0 mx-4 space-y-2">
               ${tweet.content}
               <div class="content text-xl md:mx-0 mx-4 space-y-2">
-              ${new Date(tweet.created).toLocaleDateString()}
+              ${new Date(tweet.created).toLocaleDateString()}            
             </div>
            
 
@@ -434,7 +429,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
             })
           })
       
-        // add logic to delete a tweet if it gets at least 5 misinfo votes
+        // add logic to hide a tweet if it gets at least 5 misinfo votes
           if (response.ok) {
             let existingNumberOfMisinfo = document.querySelector(`.tweet-${tweetId} .misinfo`).innerHTML
             let newNumberOfMisinfo = parseInt(existingNumberOfMisinfo) + 1
@@ -616,147 +611,3 @@ firebase.auth().onAuthStateChanged(async function(user) {
     ui.start('.sign-in-or-sign-out', authUIConfig)
   }
 })
-
-// given a single tweet Object, render the HTML and attach event listeners
-// expects an Object that looks similar to:
-// {
-//   id: 'abcdefg',
-//   username: 'brian',
-//   tweet: 'I like GME a lot...',
-//   likes: 12,
-//   Misinformation ranking: 1,
-//   Political Bias: 2,
-//   comments: [
-//     { username: 'brian', text: 'i love tacos!' },
-//     { username: 'ben', text: 'fake news' }
-//   ]
-// }
-
-
-
-
-
-
-
-
-
-//         let docRef = await db.collection('tweets').add({ 
-//           userId: user.uid,
-//           username: tweetUsername, 
-//           tweetText: tweetText,
-//           tweetTimeStamp: tweetTimeStamp,          
-//           tweetRating: tweetRating
-//         })
-//         let tweetId = docRef.id // the newly created document's ID
-//         console.log(`new tweet posted by ${tweetUsername}`)
-//         console.log(`${tweetText}`)
-
-//         document.querySelector('#tweet-text').value = '' // clear the image url field
-
-//         renderTweet(tweetId, tweetUsername, tweetText, tweetRating, tweetTimeStampDatenTime) // , I added tweetTimeStampDatenTime and it worked
-//             console.log(tweetTimeStamp)
-//       })
-
-//       //let querySnapshot = await db.collection('tweets').where('userId', '==', user.uid).get()
-//       let querySnapshot = await db.collection('tweets').get()
-//       console.log(`Number of tweets by user : ${querySnapshot.size}`)
-
-//       // tried to show the tweets from the account
-//       let tweets = querySnapshot.docs
-//       for (let i=0; i<tweets.length; i++) {
-//         let tweetId = tweets[i].id
-//         let tweet = tweets[i].data()        
-//         //let tweet = tweets[i]
-//         //let docRef = await db.collection('tweets').doc(`${user.id}`).get()
-//         let tweetText = tweet
-
-//         console.log(`${tweetText}`)
-//         // 
-//         document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
-//         <div class="w-1/5 p-8 tweet-${tweets.id} py-4 text-xl border-b-2 border-purple-500 w-full">
-//         ${tweet}, <br> ${tweetId}, <br>      
-//           <a href="#" class="done p-2 text-sm bg-green-500 text-white"> ✓ </a>             
-//         </div>            
-//          `)       
-//       }
-
-//   } else {
-//     // Signed out
-//     console.log('signed out')
-
-//     // Hide the form when signed-out
-//    document.querySelector('form').classList.add('hidden')
-
-//     // Initializes FirebaseUI Auth
-//     let ui = new firebaseui.auth.AuthUI(firebase.auth())
-
-//     // FirebaseUI configuration
-//     let authUIConfig = {
-//       signInOptions: [
-//         firebase.auth.EmailAuthProvider.PROVIDER_ID
-//       ],
-//       signInSuccessUrl: 'index.html'
-//     }
-
-//     // Starts FirebaseUI Auth
-//     ui.start('.sign-in-or-sign-out', authUIConfig)
-//   }
-// })
-
-// async function renderTweet(tweetId, tweetUsername, tweetText, tweetRating, tweetTimeStamp) {
-//     document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
-//       <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8" style="background-color:DeepSkyBlue;">
-//         <div class="md:mx-0 mx-4">
-//           <span>Tweeted by: ${tweetUsername}</span>
-//         </div>
-    
-//         <div>
-//           <h1>${tweetText}</h1>
-//           <h2> <br> This tweet has a rating of: <span class ="rating">${tweetRating}</span> </h2>
-//           <button class="rating-button">rate by clicking: ✅</button>
-//         </div>
-    
-//         <div>
-//           <h3>Tweet Timestamp: ${tweetTimeStamp}</h3> 
-//         </div>
-//       </div>
-//     `)
-
-//     // this is where our rating button should eventually go
-//     document.querySelector(`.tweet-${tweetId} .rating-button`).addEventListener('click', async function(event) {
-//         event.preventDefault()
-//         console.log(`tweet ${tweetId} has been rated!`)
-//         let currentUserId = firebase.auth().currentUser.uid
-    
-//         let querySnapshot = await db.collection('ratings')
-//           .where('tweetId', '==', tweetId)
-//           .where('userId', '==', currentUserId)
-//           .where('username', '==', tweetUsername)
-//           .get()
-    
-//         if (querySnapshot.size == 0) {
-//           await db.collection('ratings').add({
-//             tweetId: tweetId,
-//             userId: currentUserId,
-//             username: tweetUsername
-//           })
-//           let existingRating = document.querySelector(`.tweet-${tweetId} .rating`).innerHTML
-//           let newRating = parseInt(existingRating) + 1 //this needs to change!
-//           document.querySelector(`.tweet-${tweetId} .rating`).innerHTML = newRating
-//         }
-        
-//       })
-// }
-
-// // given an Array of comment Objects, loop and return the HTML for the comments
-// // function renderTweets(tweets) {
-// //   if (tweets) {
-// //     let markup = ''
-// //     for (let i = 0; i < tweets.length; i++) {
-// //       markup += renderComment(tweets[i])
-// //     }
-// //     return markup
-// //   } else {
-// //     return ''
-// //   }
-// // }
