@@ -52,10 +52,12 @@ firebase.auth().onAuthStateChanged(async function(user) {
           </div>
             
                   
-            <div class="content 
-            text-1xl md:mx-0 mx-4 space-y-2">
-            ${tweet.tweetText}   
-            </div>   
+
+            <div class="border-double border-8 border-light-blue500 content text-2xl md:mx-0 mx-4 space-y-2">
+              ${tweet.tweetText}
+              <div class="content text-xl md:mx-0 mx-4 space-y-2">
+              <br> <em> ${new Date().toLocaleDateString()} </em>          
+            </div>    
 
             <div class="text-2xl md:mx-0 mx-4">
               <button class="like-button">❤️</button>
@@ -63,13 +65,15 @@ firebase.auth().onAuthStateChanged(async function(user) {
             </div>
       
           <div class="text-2xl md:mx-0 mx-4">
-            <br>            
+            <br>           
+            <small> <em> Flagged for Misinformation: </em> </small>
             <button class="misinfo-button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS49nshYXDeQF7k_olZscagdY32oKdeOr80PA&usqp=CAU" width="20" height="20" border="0" alt="javascript button"></button>
             <span class="misinfo">0</span>      
           </div>
       
           <div class="text-2xl md:mx-0 mx-4">
             <br>
+            <small> <em> Political Inclination: </em> </small>
             <button class="leftbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/DemocraticLogo.svg/1200px-DemocraticLogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
             <span class="leftbias">0</span> &emsp; &emsp;
             <button class="rightbias-button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/1200px-Republicanlogo.svg.png" width="20" height="20" border="0" alt="javascript button"></button>
@@ -344,7 +348,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
           document.querySelector('.tweets').insertAdjacentHTML('beforeend', `
           <div class="tweet-${tweetId} md:mt-16 mt-8 space-y-8">
             <div class="md:mx-0 mx-4">
-              <span class="font-bold text-2xl">${tweet.username}</span>
+              <span class="font-bold text-2xl text-red-600">${tweet.username}</span>
             </div>        
      
             <div class="border-double border-8 border-light-blue500 content text-2xl md:mx-0 mx-4 space-y-2">
