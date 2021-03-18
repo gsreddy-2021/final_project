@@ -4,7 +4,7 @@ NETLIFY:
 https://elated-jang-b06bff.netlify.app/
 
 NATIVESCRIPT:
-https://play.nativescript.org/?template=play-js&id=aYfw4c
+https://play.nativescript.org/?template=play-js&id=F83vaY&v=3
 
 # Team: 
 Sachit Reddy G., Ryan Chan, Cory Goode
