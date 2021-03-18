@@ -1,4 +1,10 @@
-# Final Project Template
+# Final Project 
+
+NETLIFY:
+https://elated-jang-b06bff.netlify.app/
+
+NATIVESCRIPT:
+https://play.nativescript.org/?template=play-js&id=aYfw4c
 
 # Team: 
 Sachit Reddy G., Ryan Chan, Cory Goode
